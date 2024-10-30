@@ -1,14 +1,33 @@
 ---
-import BaseHead from '../../components/BaseHead.astro';
-import Header from '../../components/Header.astro';
-import Footer from '../../components/Footer.astro';
-import { SITE_TITLE, SITE_DESCRIPTION } from '../../consts';
-import { getCollection } from 'astro:content';
-import FormattedDate from '../../components/FormattedDate.astro';
+import BaseHead from "../../components/BaseHead.astro";
+import Header from "../../components/Header.astro";
+import Footer from "../../components/Footer.astro";
+import { SITE_TITLE, SITE_DESCRIPTION } from "../../consts";
+import { getCollection } from "astro:content";
+import FormattedDate from "../../components/FormattedDate.astro";
+import { WpQuery } from "../../graphql/wordpress";
+import type { Post } from "../../graphql/types";
 
-const posts = (await getCollection('blog')).sort(
-	(a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf(),
-);
+const data = await WpQuery({
+	query: `
+		query GetPosts {
+  posts {
+    nodes {
+      slug
+      title
+      date
+      featuredImage {
+        node {
+          sourceUrl
+          altText
+        }
+      }
+    }
+  }
+}
+	`,
+});
+console.log(data?.posts.nodes[1]);
 ---
 
 <!doctype html>
@@ -91,13 +110,22 @@ const posts = (await getCollection('blog')).sort(
 			<section>
 				<ul>
 					{
-						posts.map((post) => (
+						data?.posts.nodes.map((post: Post) => (
 							<li>
 								<a href={`/blog/${post.slug}/`}>
-									<img width={720} height={360} src={post.data.heroImage} alt="" />
-									<h4 class="title">{post.data.title}</h4>
+									<img
+										width={720}
+										height={360}
+										src={
+											post.featuredImage?.node.sourceUrl
+												? post.featuredImage?.node.sourceUrl
+												: "/blog-placeholder-3.jpg"
+										}
+										alt={post.featuredImage?.node.altText}
+									/>
+									<h4 class="title">{post.title}</h4>
 									<p class="date">
-										<FormattedDate date={post.data.pubDate} />
+										{/* <FormattedDate date={post.date ? post.date : ''} /> */}
 									</p>
 								</a>
 							</li>

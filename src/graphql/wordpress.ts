@@ -5,7 +5,7 @@ interface WpQueryParams {
 }
 
 export async function WpQuery({ query, variables }: WpQueryParams) {
-    const response = await fetch("http://localhost:8001/graphql", {
+    const response = await fetch(`${import.meta.env.WORDPRESS_GRAPHQL_URL}`, {
         method: "POST",
         headers: {
             'Content-Type': 'application/json',

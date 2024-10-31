@@ -1,21 +1,5 @@
 ---
 import Layout from "../layouts/BlogPost.astro";
-import { WpQuery } from "../graphql/wordpress";
-import type { Post } from "../graphql/types";
-
-const data = await WpQuery({
-	query: `
-    query GetPosts {
-  		posts {
-    		nodes {
-      		slug
-      		excerpt
-      		title
-    		}
-  		}
-	}
-    `,
-});
 ---
 
 <Layout

@@ -3,7 +3,6 @@ import BaseHead from "../../components/BaseHead.astro";
 import Header from "../../components/Header.astro";
 import Footer from "../../components/Footer.astro";
 import { SITE_TITLE, SITE_DESCRIPTION } from "../../consts";
-import { getCollection } from "astro:content";
 import FormattedDate from "../../components/FormattedDate.astro";
 import { WpQuery } from "../../graphql/wordpress";
 import type { Post } from "../../graphql/types";
@@ -11,23 +10,22 @@ import type { Post } from "../../graphql/types";
 const data = await WpQuery({
 	query: `
 		query GetPosts {
-  posts {
-    nodes {
-      slug
-      title
-      date
-      featuredImage {
-        node {
-          sourceUrl
-          altText
-        }
-      }
-    }
-  }
-}
+			posts {
+				nodes {
+					slug
+					title
+					date
+					featuredImage {
+						node {
+							sourceUrl
+							altText
+						}
+					}
+				}
+			}
+		}
 	`,
 });
-console.log(data?.posts.nodes[1]);
 ---
 
 <!doctype html>
@@ -118,14 +116,15 @@ console.log(data?.posts.nodes[1]);
 										height={360}
 										src={
 											post.featuredImage?.node.sourceUrl
-												? post.featuredImage?.node.sourceUrl
-												: "/blog-placeholder-3.jpg"
+												? post.featuredImage?.node
+														.sourceUrl
+												: "/blog-placeholder-5.jpg"
 										}
-										alt={post.featuredImage?.node.altText}
+										alt={post.featuredImage?.node.altText || 'Featured Image'}
 									/>
 									<h4 class="title">{post.title}</h4>
 									<p class="date">
-										{/* <FormattedDate date={post.date ? post.date : ''} /> */}
+										<FormattedDate date={post.date ? post.date : ''} />
 									</p>
 								</a>
 							</li>

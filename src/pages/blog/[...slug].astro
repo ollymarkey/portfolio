@@ -1,20 +1,47 @@
 ---
-import { type CollectionEntry, getCollection } from 'astro:content';
+import { WpQuery } from '../../graphql/wordpress';
 import BlogPost from '../../layouts/BlogPost.astro';
+import type { Post } from '../../graphql/types';
 
 export async function getStaticPaths() {
-	const posts = await getCollection('blog');
-	return posts.map((post) => ({
-		params: { slug: post.slug },
-		props: post,
-	}));
-}
-type Props = CollectionEntry<'blog'>;
+    const data = await WpQuery({
+        query: `
+            query GetPosts {
+                posts {
+                    nodes {
+                        slug
+                        title
+                        date
+                        content
+                        featuredImage {
+                            node {
+                                sourceUrl
+                                altText
+                            }
+                        }
+                    }
+                }
+            }
+        `,
+    });
 
-const post = Astro.props;
-const { Content } = await post.render();
+    return data.posts.nodes.map((post: Post) => ({
+        params: { slug: post.slug },
+        props: { post },
+    }));
+}
+
+const { post } = Astro.props;
+type Props = {
+    post: Post;
+};
 ---
 
-<BlogPost {...post.data}>
-	<Content />
+<BlogPost 
+    title={post.title}
+    pubDate={post.date ? new Date(post.date) : new Date()}
+    heroImage={post.featuredImage?.node.sourceUrl || "/blog-placeholder-5.jpg"}
+    alt={post.featuredImage?.node.altText || 'Featured Image'}
+>
+    <div set:html={post.content} />
 </BlogPost>

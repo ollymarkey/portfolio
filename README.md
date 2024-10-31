@@ -3,12 +3,8 @@
 ```sh
 npm create astro@latest -- --template blog
 ```
-
-[![Open in StackBlitz](https://developer.stackblitz.com/img/open_in_stackblitz.svg)](https://stackblitz.com/github/withastro/astro/tree/latest/examples/blog)
-[![Open with CodeSandbox](https://assets.codesandbox.io/github/button-edit-lime.svg)](https://codesandbox.io/p/sandbox/github/withastro/astro/tree/latest/examples/blog)
-[![Open in GitHub Codespaces](https://github.com/codespaces/badge.svg)](https://codespaces.new/withastro/astro?devcontainer_path=.devcontainer/blog/devcontainer.json)
-
-> 🧑‍🚀 **Seasoned astronaut?** Delete this file. Have fun!
+This repository is the Astro Starter Kit: Blog. I have replaced the default Astro Content with a WordPress GraphQL endpoint.
+The repo can be cloned and connected straight to a WordPress GraphQL endpoint. Includes typescript types for all the WordPress GraphQL types.
 
 ![blog](https://github.com/withastro/astro/assets/2244813/ff10799f-a816-4703-b967-c78997e8323d)
 
@@ -19,7 +15,6 @@ Features:
 - ✅ SEO-friendly with canonical URLs and OpenGraph data
 - ✅ Sitemap support
 - ✅ RSS Feed support
-- ✅ Markdown & MDX support
 
 ## 🚀 Project Structure
 
@@ -29,7 +24,6 @@ Inside of your Astro project, you'll see the following folders and files:
 ├── public/
 ├── src/
 │   ├── components/
-│   ├── content/
 │   ├── layouts/
 │   └── pages/
 ├── astro.config.mjs

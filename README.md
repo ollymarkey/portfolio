@@ -1,61 +1,19 @@
-# Astro Starter Kit: Blog
+# My Portfolio
 
-```sh
-npm create astro@latest -- --template blog
-```
-This repository is the Astro Starter Kit: Blog. I have replaced the default Astro Content with a WordPress GraphQL endpoint.
-The repo can be cloned and connected straight to a WordPress GraphQL endpoint. Includes typescript types for all the WordPress GraphQL types.
+Hi there 👋, I'm Olly. I am a full stack developer and security specialist based in Melbourne, Australia. This is my portfolio and blog, built with Astro. I explain my design decisions for this portfolio in a blog post [here](https://ollymarkey.com/blog/my-portfolio).
 
-![blog](https://github.com/withastro/astro/assets/2244813/ff10799f-a816-4703-b967-c78997e8323d)
+Feel free to reach out to me on [LinkedIn](https://www.linkedin.com/in/oliver-markey-9a462a247/) or [X](https://x.com/MarkeyOlly).
 
-Features:
+The project is open source and available on [GitHub](https://github.com/ollymarkey/portfolio). Feel free to fork it and use it as a template for your own portfolio!
 
-- ✅ Minimal styling (make it your own!)
-- ✅ 100/100 Lighthouse performance
-- ✅ SEO-friendly with canonical URLs and OpenGraph data
-- ✅ Sitemap support
-- ✅ RSS Feed support
+## Roadmap
 
-## 🚀 Project Structure
-
-Inside of your Astro project, you'll see the following folders and files:
-
-```text
-├── public/
-├── src/
-│   ├── components/
-│   ├── layouts/
-│   └── pages/
-├── astro.config.mjs
-├── README.md
-├── package.json
-└── tsconfig.json
-```
-
-Astro looks for `.astro` or `.md` files in the `src/pages/` directory. Each page is exposed as a route based on its file name.
-
-There's nothing special about `src/components/`, but that's where we like to put any Astro/React/Vue/Svelte/Preact components.
-
-The `src/content/` directory contains "collections" of related Markdown and MDX documents. Use `getCollection()` to retrieve posts from `src/content/blog/`, and type-check your frontmatter using an optional schema. See [Astro's Content Collections docs](https://docs.astro.build/en/guides/content-collections/) to learn more.
-
-Any static assets, like images, can be placed in the `public/` directory.
-
-## 🧞 Commands
-
-All commands are run from the root of the project, from a terminal:
-
-| Command                   | Action                                           |
-| :------------------------ | :----------------------------------------------- |
-| `npm install`             | Installs dependencies                            |
-| `npm run dev`             | Starts local dev server at `localhost:4321`      |
-| `npm run build`           | Build your production site to `./dist/`          |
-| `npm run preview`         | Preview your build locally, before deploying     |
-| `npm run astro ...`       | Run CLI commands like `astro add`, `astro check` |
-| `npm run astro -- --help` | Get help using the Astro CLI                     |
-
-## 👀 Want to learn more?
-
-Check out [our documentation](https://docs.astro.build) or jump into our [Discord server](https://astro.build/chat).
+- [x] Integrate wordpress
+- [ ] Add technology stack
+- [ ] Update nav bar
+- [ ] Create view code component
+- [ ] Add projects
+- [ ] Add work experience 
 
 ## Credit
 

@@ -35,6 +35,13 @@ const data = await WpQuery({
 		<style>
 			main {
 				width: 960px;
+				max-width: calc(100% - 2em);
+				margin: auto;
+				padding: 3em 1em;
+			}
+			h1 {
+				margin-bottom: 2rem;
+				text-align: center;
 			}
 			ul {
 				display: flex;
@@ -52,15 +59,15 @@ const data = await WpQuery({
 				transition: 0.2s ease;
 			}
 			ul li:first-child {
-				width: 100%;
-				margin-bottom: 1rem;
+				width: 75%;
+				margin: 0 auto 1rem auto;
 				text-align: center;
 			}
 			ul li:first-child img {
 				width: 100%;
 			}
 			ul li:first-child .title {
-				font-size: 2.369rem;
+				font-size: 1.802rem;
 			}
 			ul li img {
 				margin-bottom: 0.5rem;
@@ -71,16 +78,16 @@ const data = await WpQuery({
 			}
 			.title {
 				margin: 0;
-				color: rgb(var(--black));
+				color: hsl(var(--foreground));
 				line-height: 1;
 			}
 			.date {
 				margin: 0;
-				color: rgb(var(--gray));
+				color: hsl(var(--primary));
 			}
 			ul li a:hover h4,
 			ul li a:hover .date {
-				color: rgb(var(--accent));
+				color: hsl(var(--muted-foreground));
 			}
 			ul a:hover img {
 				box-shadow: var(--box-shadow);
@@ -105,6 +112,7 @@ const data = await WpQuery({
 	<body>
 		<Header />
 		<main>
+			<h1>Latest Post:</h1>
 			<section>
 				<ul>
 					{
@@ -120,11 +128,16 @@ const data = await WpQuery({
 														.sourceUrl
 												: "/blog-placeholder-5.jpg"
 										}
-										alt={post.featuredImage?.node.altText || 'Featured Image'}
+										alt={
+											post.featuredImage?.node.altText ||
+											"Featured Image"
+										}
 									/>
 									<h4 class="title">{post.title}</h4>
 									<p class="date">
-										<FormattedDate date={post.date ? post.date : ''} />
+										<FormattedDate
+											date={post.date ? post.date : ""}
+										/>
 									</p>
 								</a>
 							</li>

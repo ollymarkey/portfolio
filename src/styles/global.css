@@ -54,6 +54,7 @@
 		--sidebar-accent-foreground: 240 5.9% 10%;
 		--sidebar-border: 220 13% 91%;
 		--sidebar-ring: 217.2 91.2% 59.8%;
+		--box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
 	}
 
 	.dark {
@@ -89,6 +90,7 @@
 		--sidebar-accent-foreground: 240 4.8% 95.9%;
 		--sidebar-border: 240 3.7% 15.9%;
 		--sidebar-ring: 217.2 91.2% 59.8%;
+		--box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.3), 0 2px 4px -2px rgb(0 0 0 / 0.3);
 	}
 }
 
@@ -100,5 +102,9 @@
 	body {
 		@apply bg-background text-foreground;
 		font-family: 'DepartureMono', monospace;
+	}
+
+	h1 {
+		@apply text-4xl font-bold md:text-5xl;
 	}
 }
